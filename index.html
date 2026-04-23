@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI — Intelligence, Awakened</title>
+    <meta name="description" content="A cinematic journey through the future of Artificial Intelligence.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Loader -->
+    <div id="loader">
+        <div class="loader-inner">
+            <div class="loader-text">AI</div>
+            <div class="loader-bar"><div class="loader-fill"></div></div>
+            <div class="loader-percent">0%</div>
+        </div>
+    </div>
+
+    <!-- Particle Canvas -->
+    <canvas id="particles"></canvas>
+
+    <!-- Mouse Glow -->
+    <div id="glow"></div>
+
+    <!-- Film Grain Overlay -->
+    <div id="grain"></div>
+
+    <!-- Side Dot Navigation -->
+    <nav id="dot-nav">
+        <button data-section="0" class="dot active" aria-label="Go to Hero section"></button>
+        <button data-section="1" class="dot" aria-label="Go to About section"></button>
+        <button data-section="2" class="dot" aria-label="Go to Capabilities section"></button>
+        <button data-section="3" class="dot" aria-label="Go to Stats section"></button>
+        <button data-section="4" class="dot" aria-label="Go to Future section"></button>
+    </nav>
+
+    <!-- Top Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="logo">AI<span>.</span></div>
+        <ul class="nav-links">
+            <li><a href="#" data-goto="0">Home</a></li>
+            <li><a href="#" data-goto="1">About</a></li>
+            <li><a href="#" data-goto="2">Capabilities</a></li>
+            <li><a href="#" data-goto="4">Future</a></li>
+        </ul>
+    </nav>
+
+    <!-- Sections Wrapper (for scroll snapping) -->
+    <div id="sections-wrapper">
+
+        <!-- Section 0: Hero -->
+        <section class="panel hero" id="hero">
+            <div class="hero-content">
+                <h1 class="split-text">
+                    <span class="line"><span class="line-inner">Intelligence,</span></span>
+                    <span class="line"><span class="line-inner gradient-text">Awakened.</span></span>
+                </h1>
+                <p class="hero-sub reveal-text">Exploring the boundaries of artificial intelligence.<br>A cinematic journey into the future.</p>
+                <div class="hero-cta reveal-text">
+                    <button class="cta-button" data-goto="1">Scroll to Explore</button>
+                </div>
+                <div class="scroll-indicator reveal-text">
+                    <div class="scroll-line"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 1: About -->
+        <section class="panel about" id="about">
+            <div class="section-grid">
+                <div class="section-left">
+                    <span class="section-label reveal-text">// WHAT IS AI</span>
+                    <h2 class="split-text">
+                        <span class="line"><span class="line-inner">Machines that</span></span>
+                        <span class="line"><span class="line-inner gradient-text">think.</span></span>
+                    </h2>
+                </div>
+                <div class="section-right">
+                    <p class="reveal-text">Artificial Intelligence is the simulation of human intelligence by machines. These systems learn, reason, and self-correct — becoming more capable with every interaction.</p>
+                    <p class="reveal-text">We stand at the dawn of an era where AI doesn't just assist — it transforms every industry, every workflow, every possibility.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Capabilities -->
+        <section class="panel capabilities" id="capabilities">
+            <div class="cap-content">
+                <span class="section-label reveal-text">// CAPABILITIES</span>
+                <h2 class="split-text">
+                    <span class="line"><span class="line-inner">Endless</span></span>
+                    <span class="line"><span class="line-inner gradient-text">Possibilities.</span></span>
+                </h2>
+                <div class="cap-grid">
+                    <div class="cap-card reveal-card">
+                        <span class="cap-number">01</span>
+                        <h3>Natural Language</h3>
+                        <p>Understanding and generating human language with unprecedented accuracy and nuance.</p>
+                        <div class="cap-card-line"></div>
+                    </div>
+                    <div class="cap-card reveal-card">
+                        <span class="cap-number">02</span>
+                        <h3>Computer Vision</h3>
+                        <p>Extracting vivid, meaningful information from images, videos and visual inputs in real-time.</p>
+                        <div class="cap-card-line"></div>
+                    </div>
+                    <div class="cap-card reveal-card">
+                        <span class="cap-number">03</span>
+                        <h3>Predictive Analytics</h3>
+                        <p>Using historical data to predict future outcomes and illuminate global trends.</p>
+                        <div class="cap-card-line"></div>
+                    </div>
+                    <div class="cap-card reveal-card">
+                        <span class="cap-number">04</span>
+                        <h3>Deep Learning</h3>
+                        <p>Neural networks that uncover patterns invisible to the human eye, powering breakthroughs.</p>
+                        <div class="cap-card-line"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Stats -->
+        <section class="panel stats" id="stats">
+            <div class="stats-content">
+                <div class="stat-item reveal-card">
+                    <span class="stat-number" data-target="97">0</span><span class="stat-suffix">%</span>
+                    <span class="stat-label">Accuracy in NLP</span>
+                </div>
+                <div class="stat-item reveal-card">
+                    <span class="stat-number" data-target="500">0</span><span class="stat-suffix">M+</span>
+                    <span class="stat-label">Parameters Trained</span>
+                </div>
+                <div class="stat-item reveal-card">
+                    <span class="stat-number" data-target="10">0</span><span class="stat-suffix">x</span>
+                    <span class="stat-label">Faster Processing</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Future / Quote -->
+        <section class="panel future" id="future">
+            <div class="future-content">
+                <span class="section-label reveal-text">// THE FUTURE</span>
+                <h2 class="split-text">
+                    <span class="line"><span class="line-inner">The journey</span></span>
+                    <span class="line"><span class="line-inner gradient-text">ahead.</span></span>
+                </h2>
+                <div class="quote-box reveal-text">
+                    <p>"The development of full artificial intelligence could spell the end of the human race… It would take off on its own, and re-design itself at an ever increasing rate."</p>
+                    <span class="quote-author">— Stephen Hawking</span>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer (outside scroll snap) -->
+    <footer id="footer">
+        <p>&copy; 2026 AI. Crafted with purpose.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
