@@ -586,8 +586,68 @@ footer p {
 }
 
 /* ==============================
+   HAMBURGER MENU (mobile)
+   ============================== */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    z-index: 200;
+}
+
+.hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.mobile-menu-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(5, 5, 16, 0.95);
+    backdrop-filter: blur(20px);
+    z-index: 150;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.mobile-menu-overlay.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile-menu-overlay a {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.3s;
+}
+
+.mobile-menu-overlay a:hover {
+    color: var(--accent-cyan);
+}
+
+/* ==============================
    RESPONSIVE
    ============================== */
+
+/* --- Tablet --- */
 @media (max-width: 1024px) {
     .cap-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -596,40 +656,249 @@ footer p {
     .stats-content {
         gap: 4rem;
     }
-}
-
-@media (max-width: 768px) {
-    .nav-links { display: none; }
-    #dot-nav { right: 1rem; }
 
     .section-grid {
+        gap: 4rem;
+    }
+}
+
+/* --- Mobile --- */
+@media (max-width: 768px) {
+    /* Navbar */
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .mobile-menu-overlay { display: flex; }
+
+    .navbar {
+        padding: 1.2rem 5%;
+    }
+
+    /* Dot navigation — move to bottom center */
+    #dot-nav {
+        top: auto;
+        right: auto;
+        bottom: 1.8rem;
+        left: 50%;
+        transform: translateX(-50%);
+        flex-direction: row;
+        gap: 0.8rem;
+    }
+
+    .dot {
+        width: 8px;
+        height: 8px;
+    }
+
+    /* Panels */
+    .panel {
+        padding: 6rem 6% 5rem;
+        align-items: flex-start;
+    }
+
+    /* Hero */
+    .hero {
+        align-items: center !important;
+    }
+
+    .hero-content {
+        gap: 1.5rem;
+    }
+
+    .hero h1 {
+        font-size: clamp(2.5rem, 12vw, 4rem);
+    }
+
+    .hero-sub {
+        font-size: 0.95rem;
+        line-height: 1.7;
+        max-width: 100%;
+    }
+
+    .cta-button {
+        padding: 0.85rem 2rem;
+        font-size: 0.75rem;
+    }
+
+    .scroll-indicator {
+        margin-top: 1rem;
+    }
+
+    .scroll-line {
+        height: 40px;
+    }
+
+    /* About */
+    .section-grid {
         grid-template-columns: 1fr;
-        gap: 3rem;
+        gap: 2rem;
+        max-width: 100%;
+    }
+
+    .section-label {
+        margin-bottom: 1rem;
+        font-size: 0.7rem;
+    }
+
+    .section-left h2 {
+        font-size: clamp(2rem, 8vw, 3rem);
+    }
+
+    .section-right p {
+        font-size: 0.95rem;
+        line-height: 1.7;
+        margin-bottom: 1rem;
+        max-width: 100%;
+    }
+
+    /* Capabilities */
+    .cap-content {
+        max-width: 100%;
+        overflow-y: auto;
+        max-height: calc(100vh - 8rem);
+        padding-bottom: 3rem;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Hide scrollbar but keep functionality */
+    .cap-content::-webkit-scrollbar {
+        display: none;
+    }
+    .cap-content {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .cap-content h2 {
+        font-size: clamp(2rem, 8vw, 3rem);
+        margin-bottom: 2rem;
+    }
+
+    .cap-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem;
+    }
+
+    .cap-card {
+        padding: 1.2rem 1rem;
+    }
+
+    .cap-number {
+        font-size: 1.8rem;
+        margin-bottom: 0.6rem;
+    }
+
+    .cap-card h3 {
+        font-size: 0.95rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .cap-card p {
+        font-size: 0.8rem;
+        line-height: 1.5;
+    }
+
+    /* Stats */
+    .stats-content {
+        flex-direction: column;
+        gap: 2.5rem;
+    }
+
+    .stat-number {
+        font-size: clamp(3rem, 12vw, 4.5rem);
+    }
+
+    .stat-suffix {
+        font-size: clamp(1.5rem, 5vw, 2.5rem);
+    }
+
+    .stat-label {
+        font-size: 0.75rem;
+        margin-top: 0.5rem;
+    }
+
+    /* Future / Quote */
+    .future-content {
+        max-width: 100%;
+    }
+
+    .future-content h2 {
+        font-size: clamp(2rem, 8vw, 3rem);
+        margin-bottom: 2rem;
+    }
+
+    .quote-box {
+        padding: 1.5rem 1.25rem;
+    }
+
+    .quote-box p {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+    }
+
+    .quote-author {
+        font-size: 0.8rem;
+    }
+
+    /* Footer */
+    footer {
+        bottom: 2.5rem;
+        padding: 1rem;
+    }
+
+    footer p {
+        font-size: 0.7rem;
+    }
+
+    /* Reduce glow on mobile for performance */
+    #glow {
+        width: 300px;
+        height: 300px;
+        filter: blur(40px);
+    }
+}
+
+/* --- Extra small phones --- */
+@media (max-width: 400px) {
+    .hero h1 {
+        font-size: clamp(2rem, 11vw, 3rem);
     }
 
     .cap-grid {
         grid-template-columns: 1fr;
-        gap: 1rem;
+        gap: 0.6rem;
     }
 
     .cap-card {
-        padding: 2rem 1.5rem;
+        padding: 1rem 0.85rem;
+    }
+
+    .cap-number {
+        font-size: 1.5rem;
+        margin-bottom: 0.4rem;
+    }
+
+    .cap-card h3 {
+        font-size: 0.85rem;
+    }
+
+    .cap-card p {
+        font-size: 0.75rem;
     }
 
     .stats-content {
-        flex-direction: column;
-        gap: 3rem;
+        gap: 2rem;
     }
 
-    .quote-box {
-        padding: 2rem;
+    .stat-number {
+        font-size: clamp(2.5rem, 10vw, 3.5rem);
     }
 
     .quote-box p {
-        font-size: 1.2rem;
+        font-size: 0.9rem;
     }
 
     .panel {
-        padding: 8% 5%;
+        padding: 5rem 5% 4rem;
     }
 }
