@@ -365,12 +365,14 @@
     if (hamburger && mobileMenu) {
         hamburger.addEventListener('click', () => {
             mobileMenu.classList.toggle('open');
+            hamburger.classList.toggle('open');
         });
 
         mobileNavLinks.forEach((link) => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
                 mobileMenu.classList.remove('open');
+                hamburger.classList.remove('open');
                 if (isTransitioning) return;
                 const target = parseInt(link.dataset.goto);
                 if (target !== currentSection) animateSection(target);
