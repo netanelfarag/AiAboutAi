@@ -179,7 +179,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 100;
+    z-index: 200;
     mix-blend-mode: difference;
 }
 
